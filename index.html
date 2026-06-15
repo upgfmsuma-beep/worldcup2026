@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>W杯2026 Command Center</title>
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI,Meiryo,sans-serif;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#1e293b;
+padding:20px;
+text-align:center;
+font-size:32px;
+font-weight:bold;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:15px;
+padding:15px;
+}
+
+.card{
+background:#1e293b;
+border-radius:15px;
+padding:15px;
+box-shadow:0 0 10px rgba(0,0,0,.4);
+}
+
+.card h2{
+margin-top:0;
+color:#60a5fa;
+}
+
+.countdown{
+font-size:28px;
+font-weight:bold;
+color:#fbbf24;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td,th{
+padding:8px;
+border-bottom:1px solid #334155;
+}
+
+footer{
+text-align:center;
+padding:15px;
+color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🏆 W杯2026 Command Center
+</header>
+
+<div class="grid">
+
+<div class="card">
+<h2>🇯🇵 次の日本戦</h2>
+<div>オランダ vs 日本</div>
+<div class="countdown" id="countdown"></div>
+</div>
+
+<div class="card">
+<h2>📊 F組順位</h2>
+<table>
+<tr><th>順位</th><th>国</th><th>勝点</th></tr>
+<tr><td>1</td><td>オランダ</td><td>-</td></tr>
+<tr><td>2</td><td>日本</td><td>-</td></tr>
+<tr><td>3</td><td>スウェーデン</td><td>-</td></tr>
+<tr><td>4</td><td>チュニジア</td><td>-</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>🚨 突破条件</h2>
+勝点6以上で突破濃厚
+</div>
+
+<div class="card">
+<h2>📺 日本戦日程</h2>
+6/15 オランダ vs 日本<br>
+6/21 チュニジア vs 日本<br>
+6/26 日本 vs スウェーデン
+</div>
+
+<div class="card">
+<h2>🏆 トーナメント</h2>
+ベスト32 → ベスト16 → ベスト8 → ベスト4 → 決勝
+</div>
+
+<div class="card">
+<h2>⚽ 試合結果</h2>
+大会開始後自動更新予定
+</div>
+
+</div>
+
+<footer>
+W杯2026 Dashboard
+</footer>
+
+<script>
+const target = new Date("2026-06-15T05:00:00");
+
+function updateCountdown(){
+const now = new Date();
+const diff = target - now;
+
+const d = Math.floor(diff/(1000*60*60*24));
+const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const m = Math.floor((diff%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML=
+`${d}日 ${h}時間 ${m}分`;
+}
+
+updateCountdown();
+setInterval(updateCountdown,60000);
+</script>
+
+</body>
+</html>
